@@ -1,23 +1,21 @@
 import React from 'react'
 
-const Header = () => {
+const Title = () => {
   return (
     <>
+      <header className="bg-gray-900">
+        <h1 className="font-bold text-purple-400 text-4xl text-center py-4">
+          Covid 19 App
+        </h1>
+      </header>
       <div className="bg-gray-900">
         <p className="text-white text-center px-10">
-          This app uses the postman Covid 19 API which is updated daily.
+          This app uses an API which is updated daily.
         </p>
         <div className="text-white flex items-center justify-center">
+        
           <a
-            href="https://api.covid19api.com/summary"
-            target="_blank"
-            rel="noopenner noreferrer"
-            className="bg-green-500 mx-2 px-4 py-1 rounded mt-5 transition-colors hover:bg-green-800"
-          >
-            JSON API
-          </a>
-          <a
-            href="https://documenter.getpostman.com/view/10808728/SzS8rjbc"
+            href='https://corona.lmao.ninja/v2/countries'
             target="_blank"
             rel="noopenner noreferrer"
             className="bg-green-500 mx-2 px-4 py-1 rounded mt-5 transition-colors hover:bg-green-800"
@@ -30,4 +28,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Title

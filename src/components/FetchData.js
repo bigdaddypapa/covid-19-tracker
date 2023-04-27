@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import moment from 'moment'
 import axios from 'axios'
 
 const FetchData = () => {
@@ -7,8 +6,8 @@ const FetchData = () => {
   const [userInput, setUserInput] = useState("");
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://api.covid19api.com/summary')
-      setCountries(response.data.Countries)
+      const response = await axios.get('https://corona.lmao.ninja/v2/countries')
+      setCountries(response.data)
     } catch (error) {
       console.error(error)
     }
@@ -24,59 +23,58 @@ const FetchData = () => {
   
   const filterCountries = countries.filter((item) => {
     return  userInput !== ""
-      ? item.Country.toLowerCase().includes(userInput.toLowerCase())
+      ? item.country.toLowerCase().includes(userInput.toLowerCase())
       : item;
   });
  
    
       
-       const displayCountries =  filterCountries.map((country) => {
+       const displayCountries =  filterCountries.map((Country) => {
           const {
-            ID,
-            Country,
-            CountryCode,
-            NewConfirmed,
-            TotalConfirmed,
-            NewDeaths,
-            TotalDeaths,
-            NewRecovered,
-            TotalRecovered,
-            Date,
-          } = country
+            country,
+            countryInfo,
+            cases,
+            todayCases,
+            deaths,
+            todayDeaths,
+            recovered,
+            todayRecovered,
+            active,
+          } = Country
 
           return (
             <section >
-            <div key={ID} className="bg-gray-800 p-4 rounded">
+            <div key={countryInfo._ID} className="bg-gray-800 p-4 rounded">
               <h2 className="font-bold text-green-400 text-3xl mb-4">
-                {Country}, <span className="font-light">{CountryCode}</span>
+                {country}, <span className="font-light">{countryInfo.iso2}</span>
               </h2>
 
               <ul>
                 <li className="flex justify-between my-2 text-red-300">
-                  <span className="font-bold">New Confirmed Cases:</span>{' '}
-                  {NewConfirmed}
+                  <span className="font-bold"> Cases:</span>{' '}
+                  {cases}
                 </li>
                 <li className="flex justify-between my-2 text-blue-300">
-                  <span className="font-bold">Total Confirmed Cases:</span>{' '}
-                  {TotalConfirmed}
+                  <span className="font-bold">Today Cases:</span>{' '}
+                  {todayCases}
                 </li>
                 <li className="flex justify-between my-2 text-yellow-300">
-                  <span className="font-bold">New Deaths:</span> {NewDeaths}
+                  <span className="font-bold"> Deaths:</span> {deaths}
                 </li>
                 <li className="flex justify-between my-2 text-purple-300">
-                  <span className="font-bold">Total Deaths:</span> {TotalDeaths}
+                  <span className="font-bold">Today Deaths:</span> {todayDeaths}
                 </li>
-                <li className="flex justify-between my-2 text-indigo-300">
-                  <span className="font-bold">New Recovered Cases:</span>{' '}
-                  {NewRecovered}
+                <li className="flex justify-between my-2 text-green-300">
+                  <span className="font-bold">Recovered:</span>{' '}
+                  {recovered}
                 </li>
                 <li className="flex justify-between my-2 text-pink-300">
-                  <span className="font-bold">Total Recovered Cases:</span>{' '}
-                  {TotalRecovered}
+                  <span className="font-bold">Today Recovered :</span>{' '}
+                  {todayRecovered}
                 </li>
-                <li className="text-green-100 mt-5">
-                  <span className="font-bold">Date:</span>{' '}
-                  {moment(`${Date}`).format('MMMM Do YYYY hh:mm:ss')}
+                <li className="flex justify-between my-2 text-indigo-300">
+                  <span className="font-bold">Active :</span>{' '}
+                  {active}
                 </li>
               </ul>
             </div>
