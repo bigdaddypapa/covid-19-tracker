@@ -1,15 +1,18 @@
-
-import './App.css';
-import Country from './components/Country';
-import Global from './components/Global';
+import React from 'react'
+import Navbar from './components/Navbar'
+import Header from './components/Header'
+import FetchData from './components/FetchData'
+// import Search from './components/Search'
 
 function App() {
   return (
-    <div className="App">
-     <Global/>
-     <Country/>
-    </div>
-  );
+    <>
+      <Navbar />
+      {/* <Search /> */}
+      <Header />
+      <FetchData />
+    </>
+  )
 }
 
-export default App;
+export default App
