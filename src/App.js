@@ -7,12 +7,11 @@ import Global from './components/Global'
 
 function App() {
   return (
-    <>
-    
+    <div>
       <Title />
       <Global/>
       <FetchData />
-    </>
+    </div>
   )
 }
 
