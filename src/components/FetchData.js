@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const FetchData = () => {
   const [countries, setCountries] = useState([])
-
+  const [userInput, setUserInput] = useState("");
   const fetchData = async () => {
     try {
       const response = await axios.get('https://api.covid19api.com/summary')
@@ -18,10 +18,19 @@ const FetchData = () => {
     fetchData()
   }, [])
 
-  return (
+  const handleSearch = (e) => {
+    setUserInput(e.target.value);
+  };
+  
+  const filterCountries = countries.filter((item) => {
+    return  userInput !== ""
+      ? item.Country.toLowerCase().includes(userInput.toLowerCase())
+      : item;
+  });
+ 
    
-      <section className="bg-gray-900 grid grid-cols-1 gap-10 px-10 py-10 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 2xl:px-20">
-        {countries.map((country) => {
+      
+       const displayCountries =  filterCountries.map((country) => {
           const {
             ID,
             Country,
@@ -36,7 +45,7 @@ const FetchData = () => {
           } = country
 
           return (
-            
+            <section >
             <div key={ID} className="bg-gray-800 p-4 rounded">
               <h2 className="font-bold text-green-400 text-3xl mb-4">
                 {Country}, <span className="font-light">{CountryCode}</span>
@@ -71,11 +80,24 @@ const FetchData = () => {
                 </li>
               </ul>
             </div>
-          )
-        })}
       </section>
-    
-  )
-}
+          )
+        })
+        return (
+          <div>
+          <section className="bg-gray-900">
+            <form  className="w-9/12 mx-auto pt-3 pb-10 lg:w-1/2">
+              <input onChange = {handleSearch}
+               
+                placeholder="Search For a Country"
+                className="bg-green-500 text-white text-xl placeholder-white font-bold tracking-widest w-full py-2 px-5 rounded"
+              />
+              </form>
+          </section>
+          <section className="bg-gray-900 grid grid-cols-1 gap-10 px-10 py-10 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 2xl:px-20"> 
+          {displayCountries}</section>
+          </div>
+        )
+      }
 
 export default FetchData
