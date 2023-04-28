@@ -41,10 +41,10 @@ const FetchData = () => {
             todayRecovered,
             active,
           } = Country
-
+console.log(Country)
           return (
             <section >
-            <div key={countryInfo._ID} className="bg-gray-800 p-4 rounded">
+            <div key={countryInfo._id} className="bg-gray-800 p-4 rounded">
               <h2 className="font-bold text-green-400 text-3xl mb-4">
                 {country}, <span className="font-light">{countryInfo.iso2}</span>
               </h2>
