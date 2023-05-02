@@ -4,7 +4,7 @@ This app is my second project in the software engineer Program at Per Scholas.
 
 #### App Functions and building process
 
-This is a coronavirus application built in ReactJs, styled with TailwindCSS and deployed to Github Pages.
+This is a coronavirus application built in ReactJs, styled with TailwindCSS and deployed to render.
  
 The application uses the Coronavirus COVID19 API which is available at [https://corona.lmao.ninja/].
 
@@ -27,6 +27,7 @@ All in all, this project was the most satisfying thing I've done! Also, looking 
 
 #### Live site
 
+I have used render to deploy my app. You can have  live access to the application through this link here: [https://covid-19-tracking-app.onrender.com].
 
 
 
