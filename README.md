@@ -27,6 +27,7 @@ All in all, this project was the most satisfying thing I've done! Also, looking 
 
 #### Live site
 
+I have used render to deploy my app. You can have  live access to the application through this link here: [https://covid-19-tracking-app.onrender.com].
 
 
 
