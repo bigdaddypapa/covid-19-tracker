@@ -44,7 +44,7 @@ const FetchData = () => {
           } = Country
 console.log(Country)
           return ( 
-            <section key={country}>
+            <section key={countryInfo._id}>
             <div  className="bg-gray-800 p-4 rounded">
               <h2 className="font-bold text-green-400 text-3xl mb-4">
                 {country}, <span className="font-light">{countryInfo.iso2}</span>
